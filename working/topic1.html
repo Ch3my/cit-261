@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Cit Fluency</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Testing</h1>
+        <h5>Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</h5>
+        <span>Fruit List</span>
+        <br>
+        <small>Click on "Create Fruit List" to insert Data below</small>
+        <br>
+        <div id="insertData"></div>
+
+        <br>
+        <input type="button" value="Create Fruit List" onclick="constructList()" class="btn btn-primary">
+        <br><br>
+        <h2>Associative Array</h2>
+        <h6>Add data to an associative array using the form below. Results will appear automatically</h6>
+        <div id="associativeArrayData"></div>
+        <br>        
+        <label for="">Name for Property</label>
+        <input type="text" class="form-control" id="objName">
+        <label for="">Value for Property</label>
+        <input type="text" class="form-control" id="objValue">
+        <br>
+        <input type="button" value="Add Stuff to Associative Array" onclick="submitForm()" class="btn btn-secondary">
+    </div>
+</body>
+
+</html>
+<script>
+    var associativeArray = {}
+
+    function constructList() {
+        var fruits = createArrayofStuff()
+        var html = '<ul>'
+        for (var i = 0; i < fruits.length; i++) {
+            if (fruits[i] != '') {
+                html += '<li>' + fruits[i] + '</li>'
+            } else {
+                // Its Empty. Don't create a li
+                continue
+            }
+        }
+        html += '</ul>'
+        document.getElementById('insertData').innerHTML = html
+    }
+
+    function createArrayofStuff() {
+        var stuff = ['Apple', 'Lemon', 'Watermelon', 'Banana', '', '', '', '']
+        return stuff
+    }
+
+    function addStuffToAssociativeArray(name, value) {
+        associativeArray[name] = value
+    }
+    function submitForm(){
+        var name = document.getElementById('objName').value        
+        var value = document.getElementById('objValue').value        
+        addStuffToAssociativeArray(name, value)
+        createAssociativeArrayOutput()
+    }
+    function createAssociativeArrayOutput(){
+        var html = '<ul>'
+        for(key in associativeArray){
+            html += '<li>Key -> ' + key + ' value -> ' + associativeArray[key] + '</li>'
+        }
+        html += '</ul>'
+
+        document.getElementById('associativeArrayData').innerHTML = html
+    }
+</script>
