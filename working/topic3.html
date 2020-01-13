@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Cit Fluency</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Testing</h1>
+        <h5>JSON Parse, Stringify</h5>
+        <p>JSON Parse and Stringify are used to convert and Object to a String and ViceVersa. Is useful when storing
+            objects, debugging, consuming APIs, etc</p>
+        <p>In this simple example we will create an object using JSON.Parse and then and show it using JSON.stringify
+        </p>
+        <div class="card">
+            <div class="card-header">
+                Here is your Stringified Object
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <div id="data"></div>
+                </blockquote>
+            </div>
+        </div>
+        <br>
+        <input type="button" value="Show me the Magic!" onclick="showObject()" class="btn btn-primary">
+    </div>
+</body>
+
+</html>
+<script>
+    function showObject() {
+        var stringObject = `{
+        "name": "John",
+        "lastName": "Carter"
+    }`
+
+        var newObj = JSON.parse(stringObject)
+        document.getElementById("data").innerHTML = JSON.stringify(newObj)
+    }
+</script>
