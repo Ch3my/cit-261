@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Cit Fluency</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Testing</h1>
+        <h5>Object creation Functions, Inherityance, Properties, Methods, Intantiation</h5>
+        <p>Please fill the following Form to watch you Pet do Stuff</p>
+        <p>When you click "Create" an object will be created using a object Animal as a parent (an instance of the
+            parent), from
+            the object Animal will inherit properties and methods that will be execute to make your pet Speak</p>
+        <div class="card">
+            <div class="card-header">
+                Your Pet is Saying
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <div id="data"></div>
+                </blockquote>
+            </div>
+        </div>
+        <br>
+        <form action="">
+            <h5>Create a Pet</h5>
+            <label for="">Species</label>
+            <input type="text" name="" id="specie" class="form-control">
+            <label for="">Name</label>
+            <input type="text" name="" id="name" class="form-control">
+            <label for="">Sound</label>
+            <input type="text" name="" id="sound" class="form-control">
+            <br>
+            <input type="button" value="Create" onclick="createAnimal()" class="btn btn-primary">
+        </form>
+    </div>
+</body>
+
+</html>
+<script>
+    var yourOwnPet
+
+    var Animal = function (species, name, sound) {
+        this.species = species
+        this.name = name
+        this.sound = sound
+    }
+    Animal.prototype.makeSound = function () {
+        return this.sound + '! ' + this.sound + '!'
+    }
+    Animal.prototype.eat = function () {
+        return this.name + ' is eating'
+    }
+    Animal.prototype.info = function () {
+        var info = `${this.sound}! My name is ${this.name} and I'm a ${this.species}`
+        return info
+    }
+
+    function createAnimal() {
+        var specie = document.getElementById('specie').value
+        var name = document.getElementById('name').value
+        var sound = document.getElementById('sound').value
+        yourOwnPet = new Animal(specie, name, sound)
+        doStuff()
+    }
+
+    function doStuff() {
+        document.getElementById('data').innerHTML = ''
+        document.getElementById('data').innerHTML = yourOwnPet.makeSound()
+        setTimeout(function () {
+            document.getElementById('data').innerHTML = yourOwnPet.info()
+        }, 1500)
+        setTimeout(function () {
+            document.getElementById('data').innerHTML = yourOwnPet.eat()
+        }, 5000)
+    }
+</script>
