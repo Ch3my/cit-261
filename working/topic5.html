@@ -12,6 +12,7 @@
         <h5>Using XMLHTTPRequest to Consume a JSON Web Service</h5>
         <p>Get the economic indicators of today through an API and show them to the user. I'm from Chile so I'm using an
             API in Spanish</p>
+            <p>When you click "Get Obj from localStorage" I show the stringified version on screen. But I log to console the parsed object</p>
         </p>
         <div class="card">
             <div class="card-header">
@@ -24,12 +25,20 @@
             </div>
         </div>
         <br>
-        <input type="button" value="Get Economic Indicators" onclick="getIndicators()" class="btn btn-primary">
+        <input type="button" value="Get Obj from localStorage" onclick="retrieveObject()" class="btn btn-primary">
+        <input type="button" value="Get String" onclick="retrieveString()" class="btn btn-primary">
+        <input type="button" value="Get Array" onclick="retrieveArray()" class="btn btn-primary">
     </div>
 </body>
 
 </html>
 <script>
+    (function () {
+        // Executes on ready
+        getIndicators()
+        saveArray()
+    })();
+
     function getIndicators() {
         var req = new XMLHttpRequest();
         req.open('GET', 'https://mindicador.cl/api', true);
@@ -37,14 +46,16 @@
             if (req.readyState == 4) {
                 if (req.status == 200) {
                     var indicators = JSON.parse(req.response)
-                    console.log(indicators)
+                    // Save Object
+                    localStorage.setItem('indicators', JSON.stringify(indicators));
                     var html = ''
                     html += indicators.uf.nombre + ': ' + indicators.uf.valor + ' ' + indicators.uf.unidad_medida + '<br/>'
                     html += indicators.dolar.nombre + ': ' + indicators.dolar.valor + ' ' + indicators.dolar.unidad_medida + '<br/>'
                     html += indicators.euro.nombre + ': ' + indicators.euro.valor + ' ' + indicators.euro.unidad_medida + '<br/>'
                     html += indicators.bitcoin.nombre + ': ' + indicators.bitcoin.valor + ' ' + indicators.bitcoin.unidad_medida + '<br/>'
-
-                    document.getElementById('data').innerHTML = html
+                    // Save String
+                    localStorage.setItem('indicatorsHtml', html);
+                    // document.getElementById('data').innerHTML = html
                 }
                 else {
                     console.log("Error loading page\n");
@@ -52,5 +63,33 @@
             }
         };
         req.send(null);
+    }
+    function saveArray(){
+        // Create a simple array to save to LocalStorage
+        var arr = []
+        arr.push('John')
+        arr.push('Mary')
+        arr.push('Peter')
+        localStorage.setItem('array', JSON.stringify(arr));
+    }
+    function retrieveObject(){
+        var data = localStorage.getItem('indicators')
+        // We should use JSON.parse to access it like an Object. However, 
+        // As we are showing it to the user we will display as it is (Stringified)
+        console.log(JSON.parse(data)) 
+        document.getElementById('data').innerHTML = data
+    }
+    function retrieveString(){
+        var data = localStorage.getItem('indicatorsHtml')
+        document.getElementById('data').innerHTML = data
+    }
+    function retrieveArray(){
+        var data = JSON.parse(localStorage.getItem('array'))
+        var html = '<ul>'
+        for(let i = 0; i < data.length; i++) {
+            html += '<li>' + data[i] + '</li>'
+        }
+        html += '</ul>'
+        document.getElementById('data').innerHTML = html
     }
 </script>
