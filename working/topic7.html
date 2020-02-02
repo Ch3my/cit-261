@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Cit Fluency</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Testing</h1>
+        <h5>Manipulating CSS Class Properties Using JavaScript</h5>
+        <p>Press the Buttons to see the changes</p>
+        </p>
+        <div class="card">
+            <div class="card-header">
+                Playground
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <div class="alert alert-primary" role="alert" id="alert">
+                        This is an alert
+                    </div>
+                </blockquote>
+            </div>
+        </div>
+        <br>
+        <input type="button" value="Loop Alert Class" onclick="toggleAlertClass()" class="btn btn-primary">
+        <input type="button" value="Remove Alert Class" onclick="removeClass()" class="btn btn-primary">
+        <input type="button" value="Toggle Class" onclick="toggle()" class="btn btn-primary">
+
+
+    </div>
+</body>
+
+</html>
+<script>
+    (function () {
+        // Executes on ready
+    })();
+    function toggleAlertClass() {
+        var el = document.getElementById('alert')
+        var randomNumber = Math.floor(Math.random() * 10)
+        switch (randomNumber) {
+            case 0:
+                el.className = 'alert alert-primary'
+                break
+            case 1:
+                el.className = 'alert alert-secondary'
+                break
+            case 2:
+                el.className = 'alert alert-success'
+                break
+            case 3:
+                el.className = 'alert alert-danger'
+                break
+            case 4:
+                el.className = 'alert alert-warning'
+                break
+            case 5:
+                el.className = 'alert alert-info'
+                break
+            case 6:
+                el.className = 'alert alert-light'
+                break
+            case 7:
+                el.className = 'alert alert-dark'
+                break
+            default:
+                el.className = 'alert alert-secondary'
+                break
+        }
+    }
+    function removeClass(){
+        var el = document.getElementById('alert')
+        el.classList.remove('alert')
+    }
+    function toggle(){
+        var el = document.getElementById('alert')
+        el.classList.toggle('alert')
+    }
+</script>
