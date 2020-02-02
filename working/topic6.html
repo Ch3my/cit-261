@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Cit Fluency</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Testing</h1>
+        <h5>DOM Manipulation Using createElement, appendChild, insertBefore, removeChild, etc.</h5>
+        <p>Press the Buttons to see the changes</p>
+        </p>
+        <div class="card">
+            <div class="card-header">
+                Playground
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0" id="data">
+                </blockquote>
+            </div>
+        </div>
+        <br>
+        <input type="button" value="Create Element" onclick="createElementF()" class="btn btn-primary">
+        <input type="button" value="Remove Element" onclick="removeElement()" class="btn btn-primary">
+        <input type="button" value="Insert Before" onclick="insertBeforeF()" class="btn btn-primary">
+
+
+    </div>
+</body>
+
+</html>
+<script>
+    (function () {
+        // Executes on ready
+    })();
+    function createElementF() {
+        if (document.getElementsByTagName('ul').length > 0) {
+            var newUl = document.getElementsByTagName('ul');
+            newUl = newUl[0]
+        } else {
+            var newUl = document.createElement("ul");
+        }
+
+        var newContent = document.createElement("li");
+        var textnode = document.createTextNode("Water");
+        newContent.appendChild(textnode);
+        newUl.appendChild(newContent);
+        var newContent2 = document.createElement("li");
+        var textnode2 = document.createTextNode("Tea");
+        newContent2.appendChild(textnode2);
+        newUl.appendChild(newContent2);
+        var current = document.getElementById("data");
+        current.appendChild(newUl);
+    }
+    function removeElement() {
+        var element = document.getElementsByTagName('ul')
+        element[0].firstChild.remove()
+    }
+
+    function insertBeforeF(){
+        var element = document.getElementsByTagName('ul')
+        var newContent = document.createElement("li");
+        var textnode = document.createTextNode("Coca Cola");
+        newContent.appendChild(textnode);
+
+        element[0].insertBefore(newContent, element[0].firstChild)
+    }
+</script>
