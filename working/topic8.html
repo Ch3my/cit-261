@@ -1,0 +1,100 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Cit Fluency</title>
+</head>
+<style>
+    .transition {
+        width: 150px;
+        height: 200px;
+        background-color: cadetblue;
+        transition: width 2s;
+        padding: 10px;
+    }
+
+    .anima {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        animation-name: animate;
+        animation-duration: 4s;
+        animation-play-state: paused;
+    }
+
+    /* The animation code */
+    @keyframes animate {
+        0% {
+            background-color: red;
+            left: 0;
+        }
+
+        25% {
+            background-color: yellow;
+        }
+
+        50% {
+            background-color: blue;
+        }
+
+        100% {
+            background-color: green;
+            left: 250px;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Testing</h1>
+        <h5>Creating CSS3 Transitions and Animations in CSS and triggering them with JavaScript</h5>
+        <p>Press the Buttons to see the changes. You can Start Stop de Animation</p>
+        </p>
+        <div class="card">
+            <div class="card-header">
+                Playground
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <div class="transition" id="data">
+                        Hi! I'm a Div with a transition
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div id="anima" class="anima">
+                        I'm an Animated Div
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                </blockquote>
+            </div>
+        </div>
+        <br>
+        <input type="button" value="Start Transition" onclick="startCSSTransition()" class="btn btn-primary">
+        <input type="button" value="Start Animation" onclick="StartCSSAnimation()" class="btn btn-primary"
+            id="animateButton">
+        <!-- <input type="button" value="Toggle Class" onclick="toggle()" class="btn btn-primary"> -->
+    </div>
+</body>
+
+</html>
+<script>
+    (function () {
+        // Executes on ready
+    })();
+    function startCSSTransition() {
+        document.getElementById('data').setAttribute('style', 'width: 300px')
+    }
+    function StartCSSAnimation() {
+        if (document.getElementById('animateButton').value == 'Pause Animation') {
+            document.getElementById('animateButton').value = 'Start Animation'
+            document.getElementById('anima').style.animationPlayState = 'paused'
+        } else {
+            document.getElementById('animateButton').value = 'Pause Animation'
+            document.getElementById('anima').style.animationPlayState = 'running'
+        }
+    }
+</script>
