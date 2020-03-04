@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <title>Cit Fluency</title>
+</head>
+<style>
+
+</style>
+
+<body>
+    <div class="container">
+        <h1>Testing</h1>
+        <h5>Designing, Defining, and Triggering CSS3 Animations without Custom Libraries (Thought Library)</h5>
+        <p>I used animateCSS to animate the elements https://daneden.github.io/animate.css/</p>
+        </p>
+        <div class="card">
+            <div class="card-header">
+                Playground
+            </div>
+            <div class="card-body">
+                <div class="animated infinite bounce">I'm animated!!!</div>
+                <br><br>
+
+                <div style="height:200px; width: 200px; background-color: red" class="animated infinite pulse">
+                    <br>
+                    <span style="color: white; margin: 0 auto; display: block; width: 120px; padding-top: 50px;">Hello
+                        There :D</span>
+                </div>
+    
+                <br>
+                <div class="animated jello delay-5s">
+                    <h1>I'm a Jello</h1>
+                </div>
+            </div>
+        </div>
+        <br>
+        <input type="button" value="Draw" onclick="Draw()" class="btn btn-primary">
+        <!-- <input type="button" value="Toggle Class" onclick="toggle()" class="btn btn-primary"> -->
+    </div>
+</body>
+
+</html>
+<script>
+    (function () {
+        // Executes on ready
+    })();
+    function Draw() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Círculo externo
+        ctx.moveTo(110, 75);
+        ctx.arc(75, 75, 35, 0, Math.PI, false);   // Boca (contra reloj)
+        ctx.moveTo(65, 65);
+        ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Ojo izquierdo
+        ctx.moveTo(95, 65);
+        ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Ojo derecho
+        ctx.stroke();
+    }
+</script>
