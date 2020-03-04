@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Cit Fluency</title>
+</head>
+<style>
+    .transition {
+        width: 150px;
+        height: 200px;
+        background-color: cadetblue;
+        transition: width 2s;
+        padding: 10px;
+    }
+
+    .anima {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        animation-name: animate;
+        animation-duration: 4s;
+        animation-play-state: paused;
+    }
+
+    /* The animation code */
+    @keyframes animate {
+        0% {
+            background-color: red;
+            left: 0;
+        }
+
+        25% {
+            background-color: yellow;
+        }
+
+        50% {
+            background-color: blue;
+        }
+
+        100% {
+            background-color: green;
+            left: 250px;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Testing</h1>
+        <h5>HTML5 Tags - Video, Audio, and Canvas</h5>
+        <p>Hte video and audio tag just show a video or audio according to config. The Canvas its just a container to
+            draw with javascript</p>
+        </p>
+        <div class="card">
+            <div class="card-header">
+                Playground
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <video width="400" controls>
+                        <source src="Laguna-Manco.mp4" type="video/mp4">
+                    </video>
+                    <audio controls>
+                        <source src="record.wav" type="audio/mpeg">
+                    </audio>
+                    <canvas id="myCanvas" width="300" height="200" style="border:1px solid #000000;">
+                    </canvas>
+                </blockquote>
+            </div>
+        </div>
+        <br>
+        <input type="button" value="Draw" onclick="Draw()" class="btn btn-primary">
+        <!-- <input type="button" value="Toggle Class" onclick="toggle()" class="btn btn-primary"> -->
+    </div>
+</body>
+
+</html>
+<script>
+    (function () {
+        // Executes on ready
+    })();
+    function Draw() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Círculo externo
+        ctx.moveTo(110, 75);
+        ctx.arc(75, 75, 35, 0, Math.PI, false);   // Boca (contra reloj)
+        ctx.moveTo(65, 65);
+        ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Ojo izquierdo
+        ctx.moveTo(95, 65);
+        ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Ojo derecho
+        ctx.stroke();
+    }
+</script>
