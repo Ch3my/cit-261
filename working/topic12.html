@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Cit Fluency</title>
+    <style>
+        .transform1:hover {
+            transform: rotate(90deg);
+        }
+        .transform1 {
+            transition: transform .8s ease-in-out;
+            width: 100px;
+            height: 100px;
+            background-color:cadetblue;
+        }
+        .transform2 {
+            transition-duration: 0.8s;
+            transition-property: left, transform;
+            transition-timing-function: ease-in-out;
+            position: absolute;
+            left: 0;
+        }
+        .transform2:hover {
+            left: 100px;   
+            transform: skewY(10deg);         
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Testing</h1>
+        <h5>Designing, Defining, and Triggering CSS3 Transforms without Custom Libraries (Thought Library)</h5>
+        <p>More Transforms Examples. I mixed them with transitions to make them more smooth</p>
+        </p>
+        <div class="card">
+            <div class="card-header">
+                Playground
+            </div>
+            <div class="card-body">
+                <div class="transform1">Transforming</div>
+                <br><br>
+
+                <div style="height:200px; width: 200px; background-color: red" class="transform2">
+                    <br>
+                    <span style="color: white; margin: 0 auto; display: block; width: 120px; padding-top: 50px;">Hello
+                        There :D</span>
+                </div>
+
+                <br>
+            </div>
+        </div>
+        <br>
+        <!-- <input type="button" value="Draw" onclick="Draw()" class="btn btn-primary"> -->
+        <!-- <input type="button" value="Toggle Class" onclick="toggle()" class="btn btn-primary"> -->
+    </div>
+</body>
+
+</html>
+<script>
+    (function () {
+        // Executes on ready
+    })();
+</script>
