@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="js.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- TODO. Consume API, cualquier api -->
+        <br>
+        <br>
+        <h5>Todo List App</h5>
+        <br>
+
+
+        <div class="form-group">
+            <label>New Todo</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" aria-describedby="button-addon2" id="todo">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" id="button-addon2"
+                        onclick="addDataToLocalStorage(document.getElementById('todo').value)">Button</button>
+                </div>
+            </div>
+        </div>
+
+        <ul class="list-group" id="listGrp">
+        </ul>
+
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</body>
+
+</html>

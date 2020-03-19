@@ -1,0 +1,8 @@
+li{ 
+    animation: fadein 200ms;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
