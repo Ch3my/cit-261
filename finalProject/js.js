@@ -48,39 +48,64 @@ function deleteItemOfList(index) {
 }
 
 function bootstrapData() {
-    // Clean current Localstorage
-    window.localStorage.removeItem('todolist')
-    // Create BootstrapData
-    var todolist = [{
-        todo: 'Visit Brazil',
-        completed: false
-    }, {
-        todo: 'Learn how to Surf',
-        completed: false
-    }, {
-        todo: 'Get a Sony Alpha Camera',
-        completed: false
-    }]
-    // Build List
-    var list = ''
-    for (var todo of todolist) {
-        list += `<li class="list-group-item list-group-item-action">${todo.todo}
+    // if Exists data do nothing. If already data retrieve it
+    if (window.localStorage.getItem('todolist') != null) {
+        // Hay datos
+        var todolist = JSON.parse(window.localStorage.getItem('todolist'))
+        // Build List
+        var list = ''
+        for (var todo of todolist) {
+            list += `<li class="list-group-item list-group-item-action">${todo.todo}
                     <button type="button" class="close" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </li>`
+        }
+        // Append to View
+        document.getElementById("listGrp").innerHTML = list
+    } else {
+        // No hay datos previos
+        // Clean current Localstorage
+        window.localStorage.removeItem('todolist')
+        // Create BootstrapData
+        var todolist = [{
+            todo: 'Visit Brazil',
+            completed: false
+        }, {
+            todo: 'Learn how to Surf',
+            completed: false
+        }, {
+            todo: 'Get a Sony Alpha Camera',
+            completed: false
+        }]
+        // Build List
+        var list = ''
+        for (var todo of todolist) {
+            list += `<li class="list-group-item list-group-item-action">${todo.todo}
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </li>`
+        }
+        // Append to View
+        document.getElementById("listGrp").innerHTML = list
+        // Save data to localStorage
+        window.localStorage.setItem('todolist', JSON.stringify(todolist))
     }
-    // Append to View
-    document.getElementById("listGrp").innerHTML = list
-    // Save data to localStorage
-    window.localStorage.setItem('todolist', JSON.stringify(todolist))
+}
+
+// Consume Api
+async function catsFacts() {
+    var facts = await $.get('https://catfact.ninja/fact?max_length=140').catch(err => console.log(err)).promise()
+    $('#fact').text(facts.fact)
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
     bootstrapData()
+    catsFacts()
     // Use this Listener to manage ids clicked independent if the user deleted from
     // beggining or end, this way we don't append statics ids with onclick on element
-    $("#listGrp").on("click", "li", function() {
+    $("#listGrp").on("click", "li", function () {
         deleteItemLocalStorage($(this).index())
     });
 
